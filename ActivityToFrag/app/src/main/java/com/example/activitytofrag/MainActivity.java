@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     public EditText text;
     public Button btn_act;
+    Fragment1 fragComp;
 
     String value;
     @Override
@@ -21,18 +22,22 @@ public class MainActivity extends AppCompatActivity {
 
         text = findViewById(R.id.edittext_act);
         btn_act = findViewById(R.id.button_act);
-        btn_act.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                value = text.getText().toString();
-            }
-        });
+
+        fragComp = new Fragment1();
 
         if(savedInstanceState==null){
             Bundle bundle = new Bundle();
             bundle.putString("key" , value);
-            getSupportFragmentManager().beginTransaction().add(R.id.frag1,Fragment1.class, bundle).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frag1,fragComp).commit();
         }
+
+        btn_act.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                value = text.getText().toString();
+                fragComp.getData(value);
+            }
+        });
 
 
     }

@@ -13,19 +13,22 @@ import android.widget.TextView;
 public class Fragment1 extends Fragment {
 
     public TextView value;
-    public Button button;
-    public String data;
+
+
+    View view;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_1, container, false);
-        data=getArguments().getString("key");
+        view = inflater.inflate(R.layout.fragment_1, container, false);
+        //data=getArguments().getString("key");
         value = view.findViewById(R.id.textview_frg);
-        button = view.findViewById(R.id.button_frg);
-                value.setText(data);
-
-
         return view;
     }
+
+    public void getData(String data){
+        value.setText(data);
+    }
+
 }
