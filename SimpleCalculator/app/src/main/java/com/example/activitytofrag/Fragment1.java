@@ -26,7 +26,7 @@ public class Fragment1 extends Fragment {
     }
 
     public void getData(String data){
-        value.setText(data);
+        value.setText("Result = " + data);
     }
 
 }
