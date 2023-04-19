@@ -1,7 +1,10 @@
 package com.example.activitytofrag;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -36,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         fragComp = new Fragment1();
 
         if(savedInstanceState==null){
-            Bundle bundle = new Bundle();
-            bundle.putInt("key" , ans);
+            //Bundle bundle = new Bundle();
+            //bundle.putInt("key" , ans);
             getSupportFragmentManager().beginTransaction().replace(R.id.frag1,fragComp).commit();
         }
 
@@ -50,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 b = Integer.parseInt(num2.getText().toString());
                 ans=a+b;
                 fragComp.getData(String.valueOf(ans));
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(num1.getWindowToken(), 0);
             }
         });
 
@@ -61,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                 b = Integer.parseInt(num2.getText().toString());
                 ans=a-b;
                 fragComp.getData(String.valueOf(ans));
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(num1.getWindowToken(), 0);
             }
         });
 
@@ -72,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
                 b = Integer.parseInt(num2.getText().toString());
                 ans=a*b;
                 fragComp.getData(String.valueOf(ans));
+
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(num1.getWindowToken(), 0);
             }
         });
 
@@ -83,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
                 float b = Integer.parseInt(num2.getText().toString());
                 float ans=a/b;
                 fragComp.getData(String.valueOf(ans));
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(num1.getWindowToken(), 0);
             }
         });
 
