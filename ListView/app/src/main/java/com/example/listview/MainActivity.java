@@ -30,6 +30,5 @@ public class MainActivity extends AppCompatActivity {
         MyAdapter adapter = new MyAdapter(MainActivity.this,listShow);
         listView.setAdapter(adapter);
 
-
     }
 }
