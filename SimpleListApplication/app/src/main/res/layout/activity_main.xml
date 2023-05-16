@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/Platform.MaterialComponents"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="List View and Grid View in Dialogue Box"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:textStyle="bold"/>
+
+
+    <Button
+        android:id="@+id/btnListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/titleText"
+        android:hint="ListView with Text"
+        android:textColorHint="@color/white"/>
+
+    <Button
+        android:id="@+id/btnListViewWithImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnListView"
+        android:hint="ListView with Image"
+        android:textColorHint="@color/white"
+
+        />
+    <Button
+        android:id="@+id/btnGridView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnListViewWithImage"
+        android:hint="GridView"
+        android:textColorHint="@color/white"
+
+        />
+
+</RelativeLayout>
