@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     //Multiple Objects
     private static final String API_URL_1 = "https://jsonplaceholder.typicode.com/posts";
 
+    private static final String API_URL_LOGIN = "https://auth-api-gzcq.onrender.com/auth/login";
+
     TextView tv1 , tv2;
     ListView l1;
     List<String> title;
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*-----------------Viewing Single Object Only------------*/
+        /**-----------------Viewing Single Object Only-------------------**/
         /*tv1 = findViewById(R.id.Text);
         tv2 = findViewById(R.id.Text2);
 
@@ -64,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(jsonObject);*/
 
 
-        /*------------------Viewing Multiple Object in List View------------------*/
+        /**------------------Viewing Multiple Object in List View------------------**/
 
-        l1 = findViewById(R.id.List);
+        /*l1 = findViewById(R.id.List);
         title = new ArrayList<>();
         JsonArrayRequest jsonArray = new JsonArrayRequest(Request.Method.GET, API_URL_1, null, new Response.Listener<JSONArray>() {
             @Override
@@ -91,7 +93,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Volley.newRequestQueue(this).add(jsonArray);
+        Volley.newRequestQueue(this).add(jsonArray);*/
+
+
+        /**------------------POST METHOD--------------------**/
+
+        JSONObject reqObj = new JSONObject();
+        try {
+            reqObj.put("email" ,"bivash@gmail.com");
+            reqObj.put("password" , "password");
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, API_URL_LOGIN, reqObj, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText(MainActivity.this, "Login SuccessFull", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Volley.newRequestQueue(this).add(jsonObjectRequest);
 
     }
 }
